@@ -1,5 +1,6 @@
 package com.interbanking.challenge.infrastructure.adapters.output.persistence.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -16,15 +17,20 @@ import java.time.LocalDateTime;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "EnterpriseTransferInfo")
+@Table
 public class EnterpriseTransferInfoEntity {
 
     @Id
     private Long idTransfer;
+    @Column
     private BigDecimal amount;
+    @Column
     private Long idEnterprise;
+    @Column
     private String debitAccount;
+    @Column
     private String creditAccount;
+    @Column
     private LocalDateTime transactionDate;
 
 }

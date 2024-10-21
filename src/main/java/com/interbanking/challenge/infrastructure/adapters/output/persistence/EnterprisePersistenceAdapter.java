@@ -13,8 +13,10 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Component
@@ -35,12 +37,19 @@ public class EnterprisePersistenceAdapter implements EnterprisePersistencePort {
   public List<Enterprise> latestTransfers() {
     ZonedDateTime zonedBuenosAires = ZonedDateTime.now(ZoneId.of("America/Argentina/Buenos_Aires"));
     LocalDateTime date = zonedBuenosAires.minusMonths(1).toLocalDateTime();
+
     List<EnterpriseTransferInfoEntity> enterpriseTransferInfoEntityList = enterpriseTransferInfoRepository.findTransfersFromTheLastMonth(date);
+
+    if(Objects.isNull(enterpriseTransferInfoEntityList) || enterpriseTransferInfoEntityList.isEmpty()){
+      return Collections.emptyList();
+    }
+
     List<Long> ids = new ArrayList<>();
     enterpriseTransferInfoEntityList.forEach(e -> ids.add(e.getIdEnterprise()));
     Set<Long> enterprisesSet = new HashSet<>(ids);
     ids.clear();
     ids.addAll(enterprisesSet);
+
     return mapper.toEnterpriseList(enterpriseRepository.findAllByIdIn(ids));
   }
 

@@ -5,9 +5,9 @@ spring:
     default-property-inclusion: non_null
     property-naming-strategy: SNAKE_CASE
   datasource:
-    url: ${DB_HOST}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://34.27.79.153:5432/challenge
+    username: interbanking
+    password: jdk83dav
     driver-class-name: org.postgresql.Driver
   jpa:
     show-sql: true

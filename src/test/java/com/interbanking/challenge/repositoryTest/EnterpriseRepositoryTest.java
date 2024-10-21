@@ -7,6 +7,9 @@ import java.util.List;
 
 public class EnterpriseRepositoryTest {
 
+    private EnterpriseRepositoryTest() {
+    }
+
     public static Enterprise createEnterprise() {
 
         return Enterprise.builder()
@@ -20,4 +23,5 @@ public class EnterpriseRepositoryTest {
         enterprises.add(createEnterprise());
         return enterprises;
     }
+
 }

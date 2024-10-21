@@ -1,10 +1,6 @@
 package com.interbanking.challenge.infrastructure.adapters.output.persistence.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,15 +13,17 @@ import java.time.LocalDateTime;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Enterprises")
+@Table
 public class EnterpriseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
+  @Column(nullable = false, unique = true)
   private String cuit;
+  @Column(nullable = false, unique = true)
   private String companyName;
+  @Column
   private LocalDateTime membershipDate;
 
 }
