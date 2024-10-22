@@ -17,7 +17,7 @@ public class Enterprise {
 
     private Long id;
     private String cuit;
-    private String companyName;
+    private String razon;
     private LocalDateTime membershipDate;
 
 }

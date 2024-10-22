@@ -26,16 +26,19 @@ public class EnterprisePersistenceAdapter implements EnterprisePersistencePort {
   private final EnterpriseRepository enterpriseRepository;
   private final EnterpriseTransferInfoRepository enterpriseTransferInfoRepository;
   private final EnterprisePersistenceMapper mapper;
+  private static final ZoneId ZONE_ID = ZoneId.of("America/Argentina/Buenos_Aires");
 
   @Override
   public Enterprise membership(Enterprise enterprise) {
+    ZonedDateTime zonedBuenosAires = ZonedDateTime.now(ZONE_ID);
+    enterprise.setMembershipDate(zonedBuenosAires.toLocalDateTime());
     return mapper.toEnterprise(
             enterpriseRepository.save(mapper.toEnterpriseEntity(enterprise)));
   }
 
   @Override
   public List<Enterprise> latestTransfers() {
-    ZonedDateTime zonedBuenosAires = ZonedDateTime.now(ZoneId.of("America/Argentina/Buenos_Aires"));
+    ZonedDateTime zonedBuenosAires = ZonedDateTime.now(ZONE_ID);
     LocalDateTime date = zonedBuenosAires.minusMonths(1).toLocalDateTime();
 
     List<EnterpriseTransferInfoEntity> enterpriseTransferInfoEntityList = enterpriseTransferInfoRepository.findTransfersFromTheLastMonth(date);
@@ -55,7 +58,7 @@ public class EnterprisePersistenceAdapter implements EnterprisePersistencePort {
 
   @Override
   public List<Enterprise> latestAdditions() {
-    ZonedDateTime zonedBuenosAires = ZonedDateTime.now(ZoneId.of("America/Argentina/Buenos_Aires"));
+    ZonedDateTime zonedBuenosAires = ZonedDateTime.now(ZONE_ID);
     LocalDateTime date = zonedBuenosAires.minusMonths(1).toLocalDateTime();
     return mapper.toEnterpriseList(enterpriseRepository.findEnterpriseFromTheLastMonth(date));
   }

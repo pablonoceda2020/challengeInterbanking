@@ -32,7 +32,7 @@ class EnterprisePersistenceAdapterTest {
 
         // then
         // AssertJ
-        assertThat(found.getCompanyName()).isEqualTo(name);
+        assertThat(found.getRazon()).isEqualTo(name);
     }
 
     @Test
@@ -46,7 +46,7 @@ class EnterprisePersistenceAdapterTest {
 
         // then
         // AssertJ
-        assertThat(enterpriseList.get(0).getCompanyName()).isEqualTo(name);
+        assertThat(enterpriseList.get(0).getRazon()).isEqualTo(name);
     }
 
     @Test
@@ -60,6 +60,6 @@ class EnterprisePersistenceAdapterTest {
 
         // then
         // AssertJ
-        assertThat(enterpriseList.get(0).getCompanyName()).isEqualTo(name);
+        assertThat(enterpriseList.get(0).getRazon()).isEqualTo(name);
     }
 }

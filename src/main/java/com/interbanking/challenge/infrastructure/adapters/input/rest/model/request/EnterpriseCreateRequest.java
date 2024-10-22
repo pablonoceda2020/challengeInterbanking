@@ -17,7 +17,7 @@ public class EnterpriseCreateRequest {
   @NotBlank(message = "Field cuit cannot be empty or null.")
   private String cuit;
 
-  @NotBlank(message = "Field companyName cannot be empty or null.")
-  private String companyName;
+  @NotBlank(message = "Field razon cannot be empty or null.")
+  private String razon;
 
 }

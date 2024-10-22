@@ -5,15 +5,16 @@ import com.interbanking.challenge.domain.model.Enterprise;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * EnterpriseRepositoryTest
+ */
 public class EnterpriseRepositoryTest {
 
-    private EnterpriseRepositoryTest() {
-    }
 
     public static Enterprise createEnterprise() {
 
         return Enterprise.builder()
-                .companyName("test")
+                .razon("test")
                 .cuit("302399988801")
                 .build();
     }

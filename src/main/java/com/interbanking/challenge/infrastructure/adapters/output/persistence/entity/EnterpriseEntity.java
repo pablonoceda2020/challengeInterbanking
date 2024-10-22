@@ -1,6 +1,11 @@
 package com.interbanking.challenge.infrastructure.adapters.output.persistence.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +27,8 @@ public class EnterpriseEntity {
   @Column(nullable = false, unique = true)
   private String cuit;
   @Column(nullable = false, unique = true)
-  private String companyName;
-  @Column
+  private String razon;
+  @Column(nullable = false)
   private LocalDateTime membershipDate;
 
 }

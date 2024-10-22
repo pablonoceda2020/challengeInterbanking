@@ -11,7 +11,7 @@ public class EnterpriseResponse {
 
   private Long id;
   private String cuit;
-  private String companyName;
+  private String razon;
   private String membershipDate;
 
 }
